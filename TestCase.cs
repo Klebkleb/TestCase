@@ -16,19 +16,18 @@ static class TestCase
     private static char[] currentLine;
 
     /// <summary>
-    /// Load a testcase with this function
+    /// Load the TestCase file and set the options
     /// </summary>
-    /// <param name="fileName"></param>
-    public static void Load(string fileName)
+    /// <param name="fileName">The name of the input file including the file extension</param>
+    /// <param name="inExtension">The extension of the input file</param>
+    /// <param name="outExtension">The extension of the output file</param>
+    /// <param name="folder">The location of the testcase</param>
+    public static void Load(string fileName, string inExtension = ".in", string outExtension = ".uit", string folder = "TestCases/")
     {
-        outputFile = fileName.Replace(".in", ".uit");
+        outputFile = fileName.Replace(inExtension, outExtension);
         file = fileName;
-        reader = new StreamReader("TestCases/" + file);
-        try
-        {
-            outputReader = new StreamReader("TestCases/" + outputFile);
-        }
-        catch { Console.WriteLine("Output file not found"); }
+        reader = new StreamReader(folder + file);
+        outputReader = new StreamReader(folder + outputFile);
     }
 
     /// <summary>
